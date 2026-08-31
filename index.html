@@ -198,6 +198,7 @@
     .jump-nav{gap:5px;}
   }
 
+  #printWatermark{display:none;}
   @media print{
     #marqueeBar,.topbar,.hero .preset-row,.ai-panel,.jump-nav,.output-actions,footer,#toast,.aspect-block-head .btn{display:none !important;}
     body{background:#fff;color:#000;padding-top:0 !important;}
@@ -205,10 +206,21 @@
     .cell{border:1px solid #999;background:#fff;}
     .cell.center-cell{background:#eef;}
     textarea{color:#000 !important;}
+    #printWatermark{
+      display:flex;align-items:center;justify-content:center;
+      position:fixed;inset:0;z-index:9999;pointer-events:none;
+      transform:rotate(-30deg);
+      font-family:var(--font-sans);font-size:6rem;font-weight:700;letter-spacing:.1em;
+      color:rgba(0,0,0,.08);
+      white-space:nowrap;
+    }
   }
 </style>
 </head>
 <body>
+
+<!-- 列印/PDF 專用浮水印：平常隱藏，只在 @media print 顯示，position:fixed 讓每頁重複出現 -->
+<div id="printWatermark" aria-hidden="true">僅供參考</div>
 
 <!-- 頂部跑馬燈：獨立運作，內容抓自工作區共用的公告 Google Sheet -->
 <div id="marqueeBar"><div id="marqueeTrack"></div></div>
