@@ -191,11 +191,22 @@
   }
   @media (max-width:600px){
     .api-grid{grid-template-columns:1fr;}
-    .core-grid{gap:5px;}
-    .cell{min-height:64px;padding:8px;}
+    .core-grid{gap:4px;}
+    .cell{min-height:64px;padding:6px;}
+    .cell .cell-label{font-size:9px;}
+    .cell textarea{font-size:12px;min-height:38px;}
     .cell.center-cell textarea{font-size:14.5px;}
-    .aspect-grid{grid-template-columns:1fr;max-width:100%;}
+    .cell.aspect-cell .cell-jump{font-size:9.5px;}
+    .aspect-grid{gap:4px;max-width:100%;}
+    .aspect-grid .cell{min-height:50px;padding:6px;}
+    .aspect-grid .cell textarea{font-size:11px;min-height:30px;}
     .jump-nav{gap:5px;}
+    .panel{padding:16px;}
+    main{padding:22px 12px 50px;}
+    .aspect-block{padding:12px;}
+  }
+  @media (max-width:380px){
+    .aspect-grid .cell textarea{font-size:10px;}
   }
 
   #printWatermark{display:none;}
