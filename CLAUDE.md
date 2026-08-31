@@ -13,7 +13,7 @@
   - 「🧠 AI 一鍵展開全部」：`buildFullPrompt()` 要求 AI 以 JSON 回覆 `{aspects[8], sub[8][8], summary, actions[3]}`，`extractJson()` 用正則抓出回應中第一個 `{...}` 區塊再 `JSON.parse`（AI 有時會夾帶額外說明文字，不能直接整段 parse）。
   - 每張表格 B 旁「🧠 AI 重新生成此面向」：`regenerateAspect(i)` 只呼叫 `buildAspectPrompt()`，只覆蓋 `state.sub[i]`，不動其他面向。
 - **匯出**：`buildFullText()` 把 9 張表格＋總結＋行動建議組成純文字，供「複製為文字」「下載 .txt」使用；「🖨 列印 / 存 PDF」走 `window.print()` + `@media print` 樣式（隱藏跑馬燈/頂欄/AI面板/按鈕，格子改白底黑字）。
-- **列印/PDF 浮水印**：`#printWatermark`（純文字「僅供參考」，非圖片），平常 `display:none`，只在 `@media print` 用 `position:fixed`+`display:flex` 顯示，`rotate(-30deg)` 半透明黑字置中，`position:fixed` 讓每一頁都重複出現。只套用在列印/PDF 這個輸出管道，不影響「複製為文字」「下載 .txt」。
+- **列印/PDF 浮水印**：`#printWatermark`（`<img id="wmImg">` 內嵌 base64 品牌圖示「馬克老師 AI・工具・學習・成長」，跟 `IPA_Kano/滿意度分析互動儀表板_進階版.html`／`restaurant-feasibility-calculator/index.html` 同一張已去背 PNG，480×297，用 Python 腳本直接字串複製過來，未經對話視窗），平常 `display:none`，只在 `@media print` 用 `position:fixed`+`display:flex` 顯示、`opacity:.11`、`width:42%`（`min/max-width` 夾住），`position:fixed` 讓每一頁都重複出現。用 `<img>` 而非 CSS `background-image`（後者會被「列印背景圖形」選項預設擋掉）。只套用在列印/PDF 這個輸出管道，不影響「複製為文字」「下載 .txt」。（原本第一版是純文字「僅供參考」，已改成品牌圖示浮水印。）
 
 ## 與姊妹專案的差異
 
