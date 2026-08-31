@@ -45,8 +45,11 @@ node --check _check.js
 
 **瀏覽器自動化測試踩坑**：這個沙箱環境對外部 Google Apps Script（跑馬燈端點）回應的後續 googleusercontent.com 資源會呈現「pending」狀態，導致 Chrome 分頁的 `document_idle`／screenshot 工具持續回報「頁面忙碌」，但 `document.readyState` 其實已是 `complete`、頁面完全可互動——這不是本工具的程式碼問題（同一段跑馬燈程式碼已在 7+ 個姊妹專案正式環境正常運作），改用 `javascript_tool` 直接查詢 DOM／`localStorage` 驗證功能即可，不需要依賴螢幕截圖。
 
+## 部署
+
+已推公開 GitHub repo `M255525/mandala-thinking`，用 `.github/workflows/deploy-pages.yml`（比照 `social-post-grader` 逐字複製）以 Actions workflow 部署 GitHub Pages（非 legacy branch-source），已上線：<https://m255525.github.io/mandala-thinking/>。
+
 ## 本次未做（後續視需要再處理）
 
 - 桌面版 exe 打包
-- 推送公開 GitHub repo／部署 GitHub Pages（使用者本次未要求，屬於「對外可見」動作，之後需另外確認）
 - 序號授權（使用者本次未要求；若之後要鎖工具，比照 `ai-prompt-generator` 的「鎖整個工具 12 個月」模式加回）
